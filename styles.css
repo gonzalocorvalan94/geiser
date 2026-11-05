@@ -20,7 +20,7 @@ html {
 .cervezas,
 .contacto,
 .nosotros {
-    scroll-margin-top: 0px;
+    scroll-margin-top: 80px;
 }
 
 #inicio {

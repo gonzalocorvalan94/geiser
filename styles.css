@@ -72,7 +72,15 @@ a {
     display: flex;
     align-items: center;
     text-decoration: none;
-    line-height: 0; /* Evita que el contenedor tome aire vertical por la tipografía */
+    line-height: 0;
+    outline: none;                    /* Quita el borde de enfoque en PC/teclado */
+    -webkit-tap-highlight-color: transparent; /* Quita el destello/sombra de toque en celulares */
+}
+
+.navbar-logo:focus,
+.navbar-logo:active {
+    outline: none;
+    background: transparent;
 }
 
 #inicio {

@@ -1,0 +1,576 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================================================== */
+
+:root {
+    --color-crema: #e6ded1;
+    --color-azul: #273b52;
+    --color-azul-oscuro: #162638;
+    --color-borde: #3c526d;
+    --color-acento: #c27830;
+    --color-acento-hover: #a16024;
+    --color-blanco-roto: #f7f5f0;
+}
+
+html {
+    scroll-behavior: auto;
+    scroll-padding-top: 0;
+}
+
+.cervezas,
+.contacto,
+.nosotros {
+    scroll-margin-top: 70px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-blanco-roto);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-azul);
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* ==========================================================================
+   2. NAVBAR
+   ========================================================================== */
+
+.navbar {
+    background-color: var(--color-azul-oscuro);
+    padding: 15px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin-bottom: -1px;
+}
+
+.navbar-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 0; /* Evita que el contenedor tome aire vertical por la tipografía */
+}
+
+.logo-img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.navbar-items {
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    padding: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--color-blanco-roto);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navbar a:hover {
+    color: var(--color-acento);
+}
+
+/* Botón hamburguesa (oculto en escritorio) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-blanco-roto);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Animación a 'X' al activar el menú */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+
+.hero {
+    min-height: 100vh;
+    color: var(--color-blanco-roto);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(./img/foto-hero.webp);
+    background-size: cover;
+    background-position: center top;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    color: var(--color-blanco-roto);
+    margin-bottom: 10px;
+}
+
+.hero p {
+    max-width: 600px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-blanco-roto);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.btn-ver {
+    border: none;
+    background-color: var(--color-acento);
+    color: var(--color-blanco-roto);
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-ver:hover {
+    background-color: var(--color-acento-hover);
+}
+
+
+/* ==========================================================================
+   4. SECCIÓN CERVEZAS
+   ========================================================================== */
+
+.cervezas {
+    min-height: 100vh;
+    background-color: var(--color-crema);
+    color: var(--color-azul-oscuro);
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cervezas h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: var(--color-azul-oscuro);
+    margin-bottom: 40px;
+}
+
+.cervezas-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: var(--color-blanco-roto);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center 35%;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    color: var(--color-azul-oscuro);
+    margin: 15px 15px 10px 15px;
+}
+
+.card p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: var(--color-azul);
+    margin: 0 15px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+
+/* ==========================================================================
+   5. SECCIÓN CONTACTO
+   ========================================================================== */
+
+.contacto {
+    min-height: 90vh;
+    background-color: var(--color-blanco-roto);
+    color: var(--color-azul-oscuro);
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.contacto-container {
+    max-width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.contacto h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: var(--color-azul-oscuro);
+    margin: 0;
+}
+
+.contacto-bajada {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: var(--color-azul);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.contacto-info {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--color-crema);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 20px 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.info-titulo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-acento-hover);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contacto-info p {
+    color: var(--color-azul-oscuro);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.contacto-botones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-contacto {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    color: var(--color-blanco-roto);
+    background-color: var(--color-acento);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-contacto:hover {
+    background-color: var(--color-acento-hover);
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================================
+   6. SECCIÓN NOSOTROS
+   ========================================================================== */
+
+.nosotros {
+    min-height: 100vh;
+    background-color: var(--color-crema);
+    color: var(--color-azul-oscuro);
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nosotros-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.nosotros-texto,
+.nosotros-imagen {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nosotros-texto h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: var(--color-azul-oscuro);
+    margin-bottom: 20px;
+}
+
+.nosotros-texto p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-azul-oscuro);
+    margin-bottom: 15px;
+    max-width: 100%;
+}
+
+.img-nosotros {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--color-borde);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ==========================================================================
+   7. FOOTER
+   ========================================================================== */
+
+.footer {
+    background-color: var(--color-azul-oscuro);
+    color: var(--color-blanco-roto);
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid var(--color-borde);
+}
+
+.footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-marca {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    color: var(--color-crema);
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.footer-texto {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: var(--color-blanco-roto);
+    margin: 0;
+}
+
+.footer-copy {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: var(--color-borde);
+    margin-top: 10px;
+}
+
+
+/* ==========================================================================
+   8. MEDIA QUERIES (RESPONSIVE DESIGN & MENÚ MÓVIL MEJORADO)
+   ========================================================================== */
+
+/* --- TABLETS (Hasta 900px) --- */
+@media (max-width: 900px) {
+    .navbar-container {
+        flex-direction: row-reverse;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-items {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        right: auto;
+        width: max-content; /* Se ajusta exactamente al tamaño del texto */
+        max-width: 65vw;    /* Límite para evitar que toque el borde opuesto */
+        height: 100vh;
+        background-color: var(--color-azul-oscuro);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: 90px;
+        padding-left: 30px;
+        padding-right: 45px;
+        gap: 25px;
+        transition: left 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5);
+        border-right: 1px solid var(--color-borde);
+    }
+
+    .navbar-items.active {
+        left: 0;
+    }
+
+    .navbar-items li {
+        width: auto;
+    }
+
+    .navbar-items a {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        color: var(--color-blanco-roto);
+        display: inline-block;
+        width: auto;
+        white-space: nowrap;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .navbar-items a:hover {
+        color: var(--color-acento);
+        transform: translateX(8px);
+    }
+
+    .cervezas-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .card-img {
+        height: 240px;
+    }
+
+    .nosotros-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .nosotros-texto, 
+    .nosotros-imagen {
+        width: 100%;
+    }
+
+    .img-nosotros {
+        min-height: 280px;
+    }
+}
+
+/* --- CELULARES (Hasta 600px) --- */
+@media (max-width: 600px) {
+    .hero, 
+    .cervezas, 
+    .contacto, 
+    .nosotros {
+        min-height: auto;
+        padding: 60px 15px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .cervezas-container {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+    }
+
+    .card-img {
+        height: 220px;
+    }
+
+    .contacto-botones {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-contacto {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+    }
+
+    .contacto-info {
+        padding: 15px 20px;
+    }
+}

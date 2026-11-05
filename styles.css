@@ -20,7 +20,11 @@ html {
 .cervezas,
 .contacto,
 .nosotros {
-    scroll-margin-top: 70px;
+    scroll-margin-top: 0px;
+}
+
+#inicio {
+    scroll-margin-top: 0;
 }
 
 * {
@@ -69,6 +73,10 @@ a {
     align-items: center;
     text-decoration: none;
     line-height: 0; /* Evita que el contenedor tome aire vertical por la tipografía */
+}
+
+#inicio {
+    scroll-margin-top: 0;
 }
 
 .logo-img {
